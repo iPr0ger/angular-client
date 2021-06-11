@@ -1,3 +1,68 @@
-<ng-container *ngIf="member">
-  <h1>{{member.knownAs}}</h1>
-</ng-container>
+<div class="row mt-5 mb-5" *ngIf="member">
+  <div class="col-4">
+    <div class="card">
+      <img src="{{member.photoUrl}}" alt="{{member.knownAs}}"
+           class="card-img-top img-thumbnail" />
+      <div class="card-body">
+        <div>
+          <strong>Location:</strong>
+          <p>{{member.city}}, {{member.country}}</p>
+        </div>
+        <div>
+          <strong>Age:</strong>
+          <p>{{member.age}}</p>
+        </div>
+        <div>
+          <strong>Last active:</strong>
+          <p>{{member.lastActive}}</p>
+        </div>
+        <div>
+          <strong>Member since:</strong>
+          <p>{{member.created}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <tabset class="member-tabset">
+      <tab heading="About {{member.knownAs}}">
+        <div class="tab-info">
+          <h4>Description</h4>
+          <p>{{member.introduction}}</p>
+          <h4>Looking for</h4>
+          <p>{{member.lookingFor}}</p>
+        </div>
+      </tab>
+
+      <tab heading="Interests">
+        <div class="tab-info">
+          <h4>Interests</h4>
+          <p>{{member.interests}}</p>
+        </div>
+      </tab>
+
+      <tab heading="Photos">
+        <div class="tab-info">
+          <ngx-gallery
+            [options]="galleryOptions"
+            [images]="galleryImages"
+            style="display: inline-block; margin-bottom: 20px;"
+          ></ngx-gallery>
+        </div>
+      </tab>
+
+      <tab heading="Messages">
+        <div class="tab-info">
+          <p>messages</p>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+</div>

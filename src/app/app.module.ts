@@ -25,6 +25,7 @@ import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
+import { TextInputComponent } from './_forms/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,

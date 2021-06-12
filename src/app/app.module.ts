@@ -26,7 +26,6 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
-import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
-    DateInputComponent,
   ],
   imports: [
     BrowserModule,

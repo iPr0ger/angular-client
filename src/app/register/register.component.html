@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
   <h2 class="text-center text-primary">
     Sign Up!
   </h2>
@@ -47,14 +47,18 @@
       Please enter a known as value
     </div>
   </div>
-  <div class="form-group" style="margin-bottom: 10px;">
+
+  <div class="form-group">
     <input
+      type="text"
       [class.is-invalid]="registerForm.get('dateOfBirth')?.errors
         && registerForm.get('dateOfBirth')?.touched"
-      type="date"
       class="form-control"
-      formControlName="dateOfBirth"
+      [formControlName]="'dateOfBirth'"
       placeholder="Date of birth"
+      bsDatepicker
+      [bsConfig]="bsConfig"
+      [maxDate]="maxDate"
     />
     <div
       *ngIf="registerForm.get('dateOfBirth')?.hasError('required')"
@@ -62,7 +66,8 @@
       Please enter a date of birth
     </div>
   </div>
-  <div class="form-group" style="margin-bottom: 10px;">
+
+  <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
     <input
       [class.is-invalid]="registerForm.get('city')?.errors
         && registerForm.get('city')?.touched"
@@ -137,8 +142,13 @@
       Passwords do not match
     </div>
   </div>
+  <div class="row mt-2 mb-2" *ngIf="validationErrors.length > 0">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">{{error}}</li>
+    </ul>
+  </div>
   <div class="form-group text-center">
-    <button type="submit" class="btn btn-success" style="margin-right: 10px;">Sign up</button>
+    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-success" style="margin-right: 10px;">Sign up</button>
     <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
   </div>
 </form>

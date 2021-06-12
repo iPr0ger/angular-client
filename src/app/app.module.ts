@@ -25,6 +25,8 @@ import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
+    DateInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
     TabsModule.forRoot(),
     NgxGalleryModule,
     NgxSpinnerModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

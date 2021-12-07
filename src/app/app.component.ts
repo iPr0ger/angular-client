@@ -2,6 +2,7 @@ import { AccountService } from './_services/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from './_models/user';
+import {debounceTime} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.getUsers();
     this.setCurrentUser();
   }

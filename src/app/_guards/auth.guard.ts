@@ -22,8 +22,11 @@ export class AuthGuard implements CanActivate {
     return this.accountService.currentUser$.pipe(
       // @ts-ignore
       map(user => {
-        if (user) return true;
-        this.toastr.error('You are not authorized');
+        if (user) {
+          return true;
+        }else{
+          this.toastr.error('You are not authorized');
+        }
       })
     );
   }

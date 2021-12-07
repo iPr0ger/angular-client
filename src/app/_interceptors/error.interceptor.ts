@@ -8,7 +8,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {catchError, debounceTime} from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -24,6 +24,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     // @ts-ignore
     return next.handle(request).pipe(
+      debounceTime(1000),
       catchError(error => {
         if (error) {
           switch (error.status) {
